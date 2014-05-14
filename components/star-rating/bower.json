@@ -1,0 +1,17 @@
+{
+  "name": "star-rating",
+  "private": false,
+  "keywords" : [
+  	"web_components",
+  	"star",
+  	"rating"
+  ],
+  "authors": [
+    "Carlos Martinez"
+  ],  
+  "description" : "Polymer Web Component to deal with star rating",
+  "license" : "MIT",
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  }
+}
