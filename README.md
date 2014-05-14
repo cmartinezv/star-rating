@@ -6,7 +6,7 @@ A Polymer element for star ratings
 
 ## Demo
 
-> [Check it live]( http://cmartinezv.github.io/webcomponents/star-rating).
+> [Check it live]( http://cmartinezv.github.io/star-rating).
 
 ## Installation
 
