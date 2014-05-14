@@ -8,6 +8,14 @@ A Polymer element for star ratings
 
 > [Check it live]( http://cmartinezv.github.io/webcomponents/star-rating).
 
+## Installation
+
+Using [Bower](http://bower.io), run:
+
+```shell
+bower install star-rating
+```
+
 ## Usage
 
 1. Import Web Components' polyfill:
@@ -54,28 +62,6 @@ Add your custom styles:
 <star-rating stars="10" rate="3" class="custom-class"></star-rating>
 ```
 
-## Setup
-
-In order to run it locally you'll need a basic server setup.
-
-1. Install [NodeJS](http://nodejs.org/download/).
-2. Install [GruntJS](http://gruntjs.com/):
-
-    ```sh
-    $ [sudo] npm install -g grunt-cli
-    ```
-
-3. Install local dependencies:
-
-    ```sh
-    $ npm install
-    ```
-
-4. Run a local server and open `http://localhost:8000`.
-
-    ```sh
-    $ grunt connect
-    ```
 
 ## Options
 
