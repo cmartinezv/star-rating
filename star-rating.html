@@ -1,0 +1,67 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A Polymer element for star ratings.
+
+##### Basic usage:
+
+    <star-rating></star-rating>
+
+##### Custom number of stars:
+
+    <star-rating stars="10"></star-rating>
+
+##### Default rate selected:
+
+    <star-rating stars="10" rate="3"></star-rating>
+
+##### Add your custom styles:
+
+    <star-rating stars="10" rate="3" class="custom-class"></star-rating>
+
+
+@element star-rating
+@blurb A Polymer element for star ratings.
+@status alpha
+@url cmartinezv.github.io/webcomponents
+-->
+<polymer-element name="star-rating" attributes="stars rate">
+
+<template>
+
+  <link href="star-rating.css" rel="stylesheet" />
+
+  <div class="star-rating-wrapper">
+    <template repeat="{{n in currentStars}}">
+      <span class="{{n == rate ? 'active' : ''}}" on-click="{{setRate}}" data-item="{{n}}">&#9734;</span>
+    </template>
+  </div>
+
+</template>
+
+<script>
+  Polymer('star-rating', {
+      /**
+       * stars: default number of stars to show
+       * @type {Number}
+       */
+       stars: 5,
+      /**
+       * rate: numbers of star selected
+       * @type {Number}
+       */
+       rate : 0,
+       ready : function() {
+        this.currentStars = [];
+        
+        for (var i = this.stars - 1; i >= 0; i--) {
+          this.currentStars.push(i+1);
+        };
+      },
+
+      setRate: function(e,d,t) {
+        this.rate = parseInt(t.dataset.item, 10 );
+      }
+    });
+</script>
+</polymer-element>

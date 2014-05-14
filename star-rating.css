@@ -1,0 +1,23 @@
+﻿:host {
+  display: block;
+}
+
+.star-rating-wrapper {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+.star-rating-wrapper > span {
+  display: inline-block;
+  position: relative;
+  width: 1em;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.star-rating-wrapper > span:hover:before,
+.star-rating-wrapper > span:hover ~ span:before,
+.star-rating-wrapper > span.active:before,
+.star-rating-wrapper > span.active ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
