@@ -25,7 +25,7 @@ A Polymer element for star ratings.
 @status alpha
 @url cmartinezv.github.io/webcomponents
 -->
-<polymer-element name="star-rating" attributes="stars rate">
+<polymer-element name="star-rating" attributes="stars rate icon customCharIcon">
 
 <template>
 
@@ -34,15 +34,20 @@ A Polymer element for star ratings.
   <div class="star-rating-wrapper">
     <template repeat="{{n in currentStars}}">
       <span class="{{n == rate ? 'active' : ''}}" on-click="{{setRate}}" data-item="{{n}}">
-	<template if="icon==='star'">
-		&#9734;
-	</template>
-	<template if="icon==='heart'">
-		&#9825;
-	</template>
-	<template if="icon==='face'">
-		&#9786;
-	</template>
+        <template if="{{customCharIcon}}">
+          {{customCharIcon}}
+        </template>
+        <template if="{{!customCharIcon}}">
+        	<template if="{{icon=='star'}}">
+        		&#9734;
+        	</template>
+        	<template if="{{icon=='heart'}}">
+        		&#9825;
+        	</template>
+        	<template if="{{icon=='face'}}">
+        		&#9786;
+        	</template>
+        </template>
       </span>
     </template>
   </div>
@@ -62,6 +67,11 @@ A Polymer element for star ratings.
        */
        icon: 'star',
       /**
+       * customCharIcon: custom Unicode character to be used to create icons (e.g. 'Ω'). It supresses icon attribute //TODO: works when set in JS doesn't work when it is * set in html tag (see demo.html). Neitehr works unicode codes.
+       * @type {String}
+       */
+       customCharIcon: null,
+      /**
        * rate: numbers of star selected
        * @type {Number}
        */
@@ -73,10 +83,9 @@ A Polymer element for star ratings.
           this.currentStars.push(i+1);
         };
       },
-
       setRate: function(e,d,t) {
         this.rate = parseInt(t.dataset.item, 10 );
-      }
+      },
     });
 </script>
 </polymer-element>
