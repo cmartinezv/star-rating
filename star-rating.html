@@ -33,7 +33,17 @@ A Polymer element for star ratings.
 
   <div class="star-rating-wrapper">
     <template repeat="{{n in currentStars}}">
-      <span class="{{n == rate ? 'active' : ''}}" on-click="{{setRate}}" data-item="{{n}}">&#9734;</span>
+      <span class="{{n == rate ? 'active' : ''}}" on-click="{{setRate}}" data-item="{{n}}">
+	<template if="icon==='star'">
+		&#9734;
+	</template>
+	<template if="icon==='heart'">
+		&#9825;
+	</template>
+	<template if="icon==='face'">
+		&#9786;
+	</template>
+      </span>
     </template>
   </div>
 
@@ -46,6 +56,11 @@ A Polymer element for star ratings.
        * @type {Number}
        */
        stars: 5,
+      /**
+       * icon: the icon to use. Options: 'star' (defualt), 'heart', 'face'
+       * @type {String}
+       */
+       icon: 'star',
       /**
        * rate: numbers of star selected
        * @type {Number}
