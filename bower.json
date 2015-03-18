@@ -1,6 +1,7 @@
 {
   "name": "star-rating",
   "private": false,
+  "version": "0.1.0",
   "keywords" : [
   	"web_components",
   	"star",
@@ -12,6 +13,6 @@
   "description" : "Polymer Web Component to deal with star rating",
   "license" : "MIT",
   "dependencies": {
-    "polymer": "Polymer/polymer#master"
+    "polymer": "Polymer/polymer#>=0.4.0 <1.0.0"
   }
 }
