@@ -25,7 +25,7 @@ A Polymer element for star ratings.
 @status alpha
 @url cmartinezv.github.io/webcomponents
 -->
-<polymer-element name="star-rating" attributes="stars rate">
+<polymer-element name="star-rating" attributes="stars rate clickable">
 
 <template>
 
@@ -53,6 +53,7 @@ A Polymer element for star ratings.
        rate : 0,
        ready : function() {
         this.currentStars = [];
+        this.clickable = clickable;
         
         for (var i = this.stars - 1; i >= 0; i--) {
           this.currentStars.push(i+1);
@@ -60,7 +61,9 @@ A Polymer element for star ratings.
       },
 
       setRate: function(e,d,t) {
-        this.rate = parseInt(t.dataset.item, 10 );
+        if(this.clickable){
+          this.rate = parseInt(t.dataset.item, 10 );
+        }
       }
     });
 </script>
