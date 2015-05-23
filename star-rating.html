@@ -25,7 +25,7 @@ A Polymer element for star ratings.
 @status alpha
 @url cmartinezv.github.io/webcomponents
 -->
-<polymer-element name="star-rating" attributes="stars rate">
+<polymer-element name="star-rating" attributes="stars rate readonly">
 
 <template>
 
@@ -51,6 +51,7 @@ A Polymer element for star ratings.
        * @type {Number}
        */
        rate : 0,
+       readonly : false,
        ready : function() {
         this.currentStars = [];
         
@@ -60,7 +61,9 @@ A Polymer element for star ratings.
       },
 
       setRate: function(e,d,t) {
-        this.rate = parseInt(t.dataset.item, 10 );
+        if(!this.readonly){
+          this.rate = parseInt(t.dataset.item, 10 );
+        }
       }
     });
 </script>
