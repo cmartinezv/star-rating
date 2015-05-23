@@ -13,11 +13,15 @@
   width: 1em;
   font-size: 1.5em;
   cursor: pointer;
+  opacity: 0.4;
 }
-.star-rating-wrapper > span:hover:before,
-.star-rating-wrapper > span:hover ~ span:before,
-.star-rating-wrapper > span.active:before,
-.star-rating-wrapper > span.active ~ span:before {
-   content: "\2605";
-   position: absolute;
+
+.star-rating-wrapper > span:hover,
+.star-rating-wrapper > span:hover ~ span {
+  opacity: 0.8;
+}
+.star-rating-wrapper > span.active,
+.star-rating-wrapper > span.active ~ span {
+   opacity: 1;
+
 }
