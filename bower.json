@@ -8,11 +8,12 @@
   	"rating"
   ],
   "authors": [
-    "Carlos Martinez"
+    "Carlos Martinez",
+    "Mfawa Alfred Onen"
   ],  
   "description" : "Polymer Web Component to deal with star rating",
   "license" : "MIT",
   "dependencies": {
-    "polymer": "Polymer/polymer#>=0.4.0 <1.0.0"
+    "polymer": "Polymer/polymer#^1.0.0"
   }
 }
