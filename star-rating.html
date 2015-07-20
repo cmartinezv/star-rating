@@ -29,7 +29,6 @@ A Polymer element for star ratings.
     display: inline-block;
     position: relative;
     width: 1em;
-    height: 1em;
     font-size: 1.5em;
     cursor: pointer;
     opacity: 0.4;
@@ -41,13 +40,19 @@ A Polymer element for star ratings.
   .star-rating-wrapper > span.active,
   .star-rating-wrapper > span.active ~ span {
      opacity: 1;
-
+  }
+  .totals {
+    opacity: 1;
+    margin-left: 50px;
   }
 </style>
 <dom-module id="star-rating">
 <template>
 
   <div class="star-rating-wrapper">
+    <template is="dom-if" if="{{withTotal(showtotals)}}">
+      <span class="totals"><span>{{rate}}</span>/<span>{{stars}}</span><span>
+    </template>
     <template id="star" is="dom-repeat" items="{{currentStars}}">
       <span class$="{{isActive(index)}}" on-tap="_setRate" data-index$="{{index}}">
         <template is="dom-if" if="{{isCustom()}}">
@@ -65,7 +70,6 @@ A Polymer element for star ratings.
       </span>
     </template>
   </div>
-
 </template>
 </dom-module>
 <script>
@@ -107,6 +111,11 @@ A Polymer element for star ratings.
           value: 0,
           notify: true
         },
+        showtotals: {
+          type: Boolean,
+          value: false,
+          notify: true
+        },
         readonly: {
           type: Boolean,
           value: false
@@ -139,6 +148,9 @@ A Polymer element for star ratings.
         if ((index - this.stars) * -1 <= this.rate) {
           return "active";
         }
+      },
+      withTotal: function(showtotals) {
+        return showtotals;
       },
       _setRate: function(e) {
       deep = Polymer.dom(this.root);
