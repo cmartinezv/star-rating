@@ -48,8 +48,8 @@ A Polymer element for star ratings.
 <template>
 
   <div class="star-rating-wrapper">
-    <template is="dom-repeat" items="{{currentStars}}">
-      <span class$="{{isActive(index)}}" on-tap="setRate" data-index$="{{index}}">
+    <template id="star" is="dom-repeat" items="{{currentStars}}">
+      <span class$="{{isActive(index)}}" on-tap="_setRate" data-index$="{{index}}">
         <template is="dom-if" if="{{isCustom()}}">
           <span>{{customcharicon}}</span>
         </template>
@@ -114,7 +114,7 @@ A Polymer element for star ratings.
         currentStars: Object
       },
     
-       ready : function() {
+       ready: function() {
         this.currentStars = [];
         for (var i = this.stars - 1; i >= 0; i--) {
           this.currentStars.push(i+1);
@@ -133,15 +133,16 @@ A Polymer element for star ratings.
         return icon == 'face' && this.customcharicon == null;
       },
       isActive: function(index) {
-        if ((index - 10) * -1 <= this.rate) {
+        if ((index - this.stars) * -1 <= this.rate) {
           return "active";
         }
       },
-      setRate: function(e) {
+      _setRate: function(e) {
         if(!this.readonly){
-          var index = e.target.getAttribute;
-          this.rate = index + 1;
-          console.log(this.rate);
+          var index = e.model.index;
+          this.rate = (index - this.stars) * -1;
+          this.$.star.render();
+          alert(this.rate);
         }
       }
     });
