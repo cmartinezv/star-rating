@@ -111,7 +111,10 @@ A Polymer element for star ratings.
           type: Boolean,
           value: false
         },
-        currentStars: Object
+        currentStars: {
+          type: Object,
+          value: []
+        },
       },
     
        ready: function() {
@@ -138,11 +141,14 @@ A Polymer element for star ratings.
         }
       },
       _setRate: function(e) {
+      deep = Polymer.dom(this.root);
         if(!this.readonly){
           var index = e.model.index;
           this.rate = (index - this.stars) * -1;
-          this.$.star.render();
-          alert(this.rate);
+          for (var i = this.stars - 1; i >= 0; i--) {
+            deep.querySelector('[data-index="'+ i +'"]').classList.remove("active");
+          };
+          deep.querySelector('[data-index="'+ index +'"]').classList.add("active");
         }
       }
     });
