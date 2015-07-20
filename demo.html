@@ -3,8 +3,7 @@
 <head>
 
   <title>Star rating Demo</title>
-
-  <script src="../platform/platform.js"></script>
+  <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
   <link rel="import" href="star-rating.html">
 
 	<style>
@@ -14,40 +13,37 @@
 		    color: #333;
 		}
 		.custom-wrapper{
-		    background: #666;
-
+		    background: #333;
+        margin: -10px;
 		}
 		.custom-class .star-rating-wrapper > span{
-		    color : white;
-		    font-size: 2em;
-		}
-		.custom-class .star-rating-wrapper > span:hover:before,
-		.custom-class .star-rating-wrapper > span:hover ~ span:before,
-		.custom-class .star-rating-wrapper > span.active:before,
-		.custom-class .star-rating-wrapper > span.active ~ span:before{
 		    color : gold;
+        padding: 2px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+		    font-size: 2em;
 		}
 	</style>
 </head>
 <body unresolved>
-	<h2>Default behaviour</h2>
+	<h2>Default behaviour:</h2>
     <star-rating></star-rating>
 
     <star-rating icon="face"></star-rating>
    
     <star-rating icon="heart"></star-rating>
 
-    <star-rating customCharIcon="Ω"></star-rating>
+    <star-rating customcharicon="&#9824;"></star-rating>
     
-    <h2>Custom number of stars</h2>
+    <h2>Custom number of stars:</h2>
     <star-rating stars="10"></star-rating>
     
-    <h2>Default rate selected</h2>
-    <star-rating stars="10" rate="3"></star-rating>
+    <h2>Default rate selected:</h2>
+    <star-rating stars="10" rate="2"></star-rating>
 
-    <h2>Custom styles</h2>
+    <h2>Custom styles:</h2>
     <div class="custom-wrapper">
-      <star-rating stars="10" rate="3" class="custom-class"></star-rating>
+      <star-rating showtotals="true" stars="12" rate="7" class="custom-class"></star-rating>
     </div>
 </body>
 </html>

@@ -6,7 +6,7 @@ A Polymer element for star ratings
 
 ## Demo
 
-> [Check it live]( http://cmartinezv.github.io/star-rating).
+![Screenshot](http://media.giphy.com/media/3oEdv9z5BGFHU8vAf6/giphy.gif)
 
 ## Installation
 
