@@ -59,10 +59,12 @@ Add your custom styles:
 
 ## Options
 
-Attribute  | Options                   | Default             | Description
----        | ---                       | ---                 | ---
-`stars`      | *number*                  | `5`               | Number of stars
-`rate`      | *number*                  | `0`               | Default number of stars selected
+Attribute           | Options   | Default   | Description
+---                 | ---       | ---       | ---
+`stars`             | *number*  | 5         | Number of stars
+`rate`              | *number*  | 0         | Default number of stars selected
+`icon`              | *string*  | star      | Set icon list, star, heart or face
+`customcharicon`    | *string*  |`null`     | For selecting a custom icon
 
 
 ## License
