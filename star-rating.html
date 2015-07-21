@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
 
 <!--
 A Polymer element for star ratings.
@@ -33,17 +35,28 @@ A Polymer element for star ratings.
     cursor: pointer;
     opacity: 0.4;
   }
-  .star-rating-wrapper > span:hover,
-  .star-rating-wrapper > span:hover ~ span {
-    opacity: 0.8;
-  }
   .star-rating-wrapper > span.active,
   .star-rating-wrapper > span.active ~ span {
      opacity: 1;
   }
-  .totals {
-    opacity: 1;
+  .star-rating-wrapper:hover > span.active,
+  .star-rating-wrapper:hover > span.active ~ span {
+     opacity: 0.4;
+  }
+  .star-rating-wrapper > span:hover,
+  .star-rating-wrapper > span:hover ~ span,
+  .star-rating-wrapper > span.active:hover ~ span {
+    opacity: 0.8 !important;
+  }
+  .star-rating-wrapper > span:hover {
+    opacity: 0.9 !important;
+  }
+  .star-rating-wrapper > span.totals {
+    opacity: 1 !important;
     margin-left: 50px;
+  }
+  .star-rating-wrapper > span.totals:hover {
+    opacity: 1 !important;
   }
 </style>
 <dom-module id="star-rating">
@@ -51,21 +64,21 @@ A Polymer element for star ratings.
 
   <div class="star-rating-wrapper">
     <template is="dom-if" if="{{withTotal(showtotals)}}">
-      <span class="totals"><span>{{rate}}</span>/<span>{{stars}}</span><span>
+      <span class="totals"><span>{{rate}}</span>/<span>{{stars}}</span></span>
     </template>
     <template id="star" is="dom-repeat" items="{{currentStars}}">
       <span class$="{{isActive(index)}}" on-tap="_setRate" data-index$="{{index}}">
         <template is="dom-if" if="{{isCustom()}}">
-          <span>{{customcharicon}}</span>
+          <paper-icon-button icon="{{customcharicon}}"></paper-icon-button>
         </template>
         <template is="dom-if" if="{{isStar(icon)}}">
-        	&#9734;
+        	<paper-icon-button icon="star"></paper-icon-button>
         </template>
         <template is="dom-if" if="{{isHeart(icon)}}">
-        	&#9829;
+        	<paper-icon-button icon="favorite"></paper-icon-button>
         </template>
         <template is="dom-if" if="{{isFace(icon)}}">
-        	&#9786;
+        	<paper-icon-button icon="face"></paper-icon-button>
         </template>
       </span>
     </template>
@@ -133,7 +146,7 @@ A Polymer element for star ratings.
         };
       },
       isCustom: function() {
-          return this.customcharicon != '';
+          return this.customcharicon;
       },
       isStar: function(icon) {
         return icon == 'star' && this.customcharicon == null;
@@ -145,7 +158,7 @@ A Polymer element for star ratings.
         return icon == 'face' && this.customcharicon == null;
       },
       isActive: function(index) {
-        if ((index - this.stars) * -1 <= this.rate) {
+        if ((index - this.stars) * -1 == this.rate) {
           return "active";
         }
       },
@@ -156,10 +169,11 @@ A Polymer element for star ratings.
       deep = Polymer.dom(this.root);
         if(!this.readonly){
           var index = e.model.index;
+          var indexOld = (this.rate * -1) + this.stars;
           this.rate = (index - this.stars) * -1;
-          for (var i = this.stars - 1; i >= 0; i--) {
-            deep.querySelector('[data-index="'+ i +'"]').classList.remove("active");
-          };
+          if (indexOld < this.stars) {
+            deep.querySelector('[data-index="'+ indexOld +'"]').classList.remove("active");
+          }
           deep.querySelector('[data-index="'+ index +'"]').classList.add("active");
         }
       }
