@@ -1,18 +1,22 @@
 {
   "name": "star-rating",
   "private": false,
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Polymer Web Component to deal with star ratings",
+  "main": "star-rating.html",
+  "author": [
+    "Carlos Martinez"
+  ], 
   "keywords" : [
   	"web-components",
-  	"star",
-  	"rating"
+  	"polymer",
+  	"star rating"
   ],
-  "authors": [
-    "Carlos Martinez",
-    "Mfawa Alfred Onen"
-  ],  
-  "description" : "Polymer Web Component to deal with star rating",
-  "license" : "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cmartinezv/star-rating.git"
+  }, 
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
     "iron-icons": "PolymerElements/iron-icons#^1.0.0",
