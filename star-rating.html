@@ -67,7 +67,7 @@ A Polymer element for star ratings.
       <span class="totals"><span>{{rate}}</span>/<span>{{stars}}</span></span>
     </template>
     <template id="star" is="dom-repeat" items="{{currentStars}}">
-      <span class$="{{isActive(index)}}" on-tap="_setRate" data-index$="{{index}}">
+      <span class$="{{isActive(index, rate)}}" on-tap="_setRate" data-index$="{{index}}">
         <template is="dom-if" if="{{isCustom()}}">
           <paper-icon-button icon="{{customcharicon}}"></paper-icon-button>
         </template>
@@ -157,8 +157,8 @@ A Polymer element for star ratings.
       isFace: function(icon) {
         return icon == 'face' && this.customcharicon == null;
       },
-      isActive: function(index) {
-        if ((index - this.stars) * -1 == this.rate) {
+      isActive: function(index, rate) {
+        if ((index - this.stars) * -1 == rate) {
           return "active";
         }
       },
