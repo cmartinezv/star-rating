@@ -6,7 +6,7 @@ A Polymer element for star ratings
 
 ## Demo
 
-> [Check it live]( http://cmartinezv.github.io/webcomponents/star-rating).
+![Screenshot](http://media.giphy.com/media/xTiTngb8EgHAYbICWc/giphy.gif)
 
 ## Installation
 
@@ -18,19 +18,13 @@ bower install star-rating
 
 ## Usage
 
-1. Import Web Components' polyfill:
-
-    ```html
-    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
-    ```
-
-2. Import Custom Element:
+1. Import Custom Element:
 
     ```html
     <link rel="import" href="src/star-rating.html">
     ```
 
-3. Start using it!
+2. Start using it!
 
     ```html
     <star-rating></star-rating>
@@ -65,10 +59,12 @@ Add your custom styles:
 
 ## Options
 
-Attribute  | Options                   | Default             | Description
----        | ---                       | ---                 | ---
-`stars`      | *number*                  | `5`               | Number of stars
-`rate`      | *number*                  | `0`               | Default number of stars selected
+Attribute           | Options   | Default   | Description
+---                 | ---       | ---       | ---
+`stars`             | *number*  | 5         | Number of stars
+`rate`              | *number*  | 0         | Default number of stars selected
+`icon`              | *string*  | star      | Set icon list, star, heart or face
+`customcharicon`    | *string*  |`null`     | For selecting a custom icon
 
 
 ## License
